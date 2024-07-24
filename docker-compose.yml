@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   chatgpt-next-web:
     profiles: [ "no-proxy" ]
@@ -7,32 +6,39 @@ services:
     ports:
       - 3000:3000
     environment:
-      - OPENAI_API_KEY=$OPENAI_API_KEY
-      - GOOGLE_API_KEY=$GOOGLE_API_KEY
-      - CODE=$CODE
-      - BASE_URL=$BASE_URL
-      - OPENAI_ORG_ID=$OPENAI_ORG_ID
-      - HIDE_USER_API_KEY=$HIDE_USER_API_KEY
-      - DISABLE_GPT4=$DISABLE_GPT4
-      - ENABLE_BALANCE_QUERY=$ENABLE_BALANCE_QUERY
-      - DISABLE_FAST_LINK=$DISABLE_FAST_LINK
-      - OPENAI_SB=$OPENAI_SB
+      #- OPENAI_API_KEY=076ea9cc83d74cdbbc7d2042d10f7a9c
+      - CODE=12349876
+      #- BASE_URL=$BASE_URL
+      - AZURE_URL=https://sunetgpt4.openai.azure.com/openai
+      #- OPENAI_ORG_ID=$OPENAI_ORG_ID
+      #- HIDE_USER_API_KEY=$HIDE_USER_API_KEY
+      #- DISABLE_GPT4=$DISABLE_GPT4
+      #- ENABLE_BALANCE_QUERY=$ENABLE_BALANCE_QUERY
+      #- DISABLE_FAST_LINK=$DISABLE_FAST_LINK
+      #- OPENAI_SB=$OPENAI_SB
+      - AZURE_API_KEY=076ea9cc83d74cdbbc7d2042d10f7a9c,627e0d011b544ef09113c301e716b109
+      - AZURE_API_VERSION=2024-02-15-preview
+      - CUSTOM_MODELS=-all,+gpt-4o@azure=Sunet_GPT4o,+qwen-plus
+      - ALIBABA_API_KEY=sk-f47f2eca6d794656bb5b52cf3dbdc70c
+      #- ALIBABA_URL=https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation
+      - HIDE_USER_API_KEY=1
 
-  chatgpt-next-web-proxy:
-    profiles: [ "proxy" ]
-    container_name: chatgpt-next-web-proxy
-    image: yidadaa/chatgpt-next-web
-    ports:
-      - 3000:3000
-    environment:
-      - OPENAI_API_KEY=$OPENAI_API_KEY
-      - GOOGLE_API_KEY=$GOOGLE_API_KEY
-      - CODE=$CODE
-      - PROXY_URL=$PROXY_URL
-      - BASE_URL=$BASE_URL
-      - OPENAI_ORG_ID=$OPENAI_ORG_ID
-      - HIDE_USER_API_KEY=$HIDE_USER_API_KEY
-      - DISABLE_GPT4=$DISABLE_GPT4
-      - ENABLE_BALANCE_QUERY=$ENABLE_BALANCE_QUERY
-      - DISABLE_FAST_LINK=$DISABLE_FAST_LINK
-      - OPENAI_SB=$OPENAI_SB
+
+  # chatgpt-next-web-proxy:
+  #   profiles: [ "proxy" ]
+  #   container_name: chatgpt-next-web-proxy
+  #   image: yidadaa/chatgpt-next-web
+  #   ports:
+  #     - 3000:3000
+  #   environment:
+  #     - OPENAI_API_KEY=$OPENAI_API_KEY
+  #     - GOOGLE_API_KEY=$GOOGLE_API_KEY
+  #     - CODE=$CODE
+  #     - PROXY_URL=$PROXY_URL
+  #     - BASE_URL=$BASE_URL
+  #     - OPENAI_ORG_ID=$OPENAI_ORG_ID
+  #     - HIDE_USER_API_KEY=$HIDE_USER_API_KEY
+  #     - DISABLE_GPT4=$DISABLE_GPT4
+  #     - ENABLE_BALANCE_QUERY=$ENABLE_BALANCE_QUERY
+  #     - DISABLE_FAST_LINK=$DISABLE_FAST_LINK
+  #     - OPENAI_SB=$OPENAI_SB
